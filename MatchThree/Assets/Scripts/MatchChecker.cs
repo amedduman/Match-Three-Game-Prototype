@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class MatchChecker : MonoBehaviour
 {
+    // dependencies
+    [SerializeField] InputManager inputManager;
+    
     public Tile[,] tiles { get; private set; }
     HashSet<Tile> matchedTiles = new HashSet<Tile>(); // we don't wanna add same drop twice in case a drop is a match vertically and horizontally
     int lastCheckedTileIndex = -1;
@@ -19,7 +22,7 @@ public class MatchChecker : MonoBehaviour
     [ContextMenu("CheckForMatches")]
     public bool CheckForMatches()
     {
-        InputManager.Instance.canInput = false;
+        inputManager.canInput = false;
         
         VerticalSearch();
 
@@ -28,7 +31,7 @@ public class MatchChecker : MonoBehaviour
         if (HasMoveCreateMatch())
         { 
             // there is no match as result of this move
-            InputManager.Instance.canInput = true;
+            inputManager.canInput = true;
             return false;
         }
         

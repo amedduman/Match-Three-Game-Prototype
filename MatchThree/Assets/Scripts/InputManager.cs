@@ -8,9 +8,15 @@ public class InputManager : MonoBehaviour
     public bool canInput { get; set; } = true;
 
     #region singletonInstance
+ 
+    // public static InputManager Instance;
 
-    public static InputManager Instance;
-    void Awake() => Instance = this;
+    void Awake()
+    {
+        // Instance = this;
+        // Debug.Log("lol");
+    }
+        
 
     #endregion
 

@@ -11,6 +11,9 @@ public class SwipeController : MonoBehaviour
     SwipeListener swipeListener;
     TileSelector tileSelector;
     [SerializeField] MatchChecker matchChecker;
+    [SerializeField] InputManager inputManager;
+
+    
     
     SwipeType swipeType = SwipeType.none;
     Tile selectedTile = null;
@@ -31,7 +34,7 @@ public class SwipeController : MonoBehaviour
 
     void OnEnable()
     {
-        InputManager.Instance.OnMouseButtonUp += CheckSwipe;
+        inputManager.OnMouseButtonUp += CheckSwipe;
         swipeListener.OnSwipe.AddListener(SetSwipeType);
         tileSelector.OnTileSelected += SetSelectedTile;
         
@@ -39,7 +42,7 @@ public class SwipeController : MonoBehaviour
 
     void OnDisable()
     {
-        InputManager.Instance.OnMouseButtonUp  -= CheckSwipe;
+        inputManager.OnMouseButtonUp  -= CheckSwipe;
         swipeListener.OnSwipe.RemoveListener(SetSwipeType);
         tileSelector.OnTileSelected -= SetSelectedTile;
     }

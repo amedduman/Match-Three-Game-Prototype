@@ -5,6 +5,7 @@ public class TileSelector : MonoBehaviour
 {
     [SerializeField] Camera gameCam;
     [SerializeField] LayerMask tileLayerMask;
+    [SerializeField] InputManager inputManager;
 
     public Action<Tile> OnTileSelected;
     bool canRaycast;
@@ -13,12 +14,12 @@ public class TileSelector : MonoBehaviour
 
     void OnEnable()
     {
-        InputManager.Instance.OnMouseButtonDown += HandlePlayerInput;
+        inputManager.OnMouseButtonDown += HandlePlayerInput;
     }
 
     void OnDisable()
     {
-        InputManager.Instance.OnMouseButtonDown -= HandlePlayerInput;
+        inputManager.OnMouseButtonDown -= HandlePlayerInput;
     }
 
     #endregion
